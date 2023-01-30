@@ -1,71 +1,43 @@
-/*Напишите программу для вывода в консоль простых чисел, чтобы они попадали в указанный
-диапазон включительно. При этом числа должны окрашиваться в цвета по принципу светофора:
-● первое число выводится зелёным цветом;
-● второе — жёлтым;
-● третье — красным.
-Диапазон, куда попадут числа, указывается при запуске программы.
-1. Если простых чисел в диапазоне нет, нужно, чтобы программа сообщила об этом в терминале
-красным цветом.
-2. Если аргумент, переданный при запуске, не считается числом — сообщите об этом ошибкой и
-завершите программу.
-*/
+// НЕ МОГУ ПОДКЛЮЧИТЬ ИМПОРТ - SyntaxError: Cannot use import statement outside a module
 import colors from 'colors'
 
 const [firstNum, lastNum] = process.argv.slice(2).map((item) => parseInt(item))
 
 if (isNaN(firstNum) || isNaN(lastNum)) {
-  console.error(
-    colors.red('аргумент, переданный при запуске, не считается числом')
-  )
+  console.error('аргумент, переданный при запуске, не считается числом')
   process.exit(0)
+}
+
+const { bgGreen, bgYellow, bgBlue } = colors
+const collection = [bgGreen, bgYellow, bgBlue]
+let ind = 0
+const colorPrint = (num) => {
+  console.log(collection[ind](num))
+  if (ind === collection.length - 1) {
+    ind = 0
+  } else {
+    ind++
+  }
 }
 
 const simpleNumbers = (num) => {
   if (num < 2) {
-    return console.log('простых чисел в диапазоне нет')
+    return false
   }
 
-  for (let i = 2; i * i <= i; i++) {
-    if (num % i === 0) {
-      return true
-    }
+  for (let i = 2; i * 2 <= i; i++) {
+    if (num % i === 0) return false
   }
+  return true
 }
-/*
-function simpleNumbers(start, end) {
-  const numb = process.argv.slice(2)
-  for (let i = start, flag = false; i <= end; i++, flag = 0) {
-    for (let j = 2; j * j <= i; j++) {
-      if (i % j == 0) {
-        flag = true
-        break
-      }
-    }
-    if (!flag) numb[numb.length] = i
-    return numb
-  }
-  console.log(`simple numb is ${numb.join(', ')}`)
+// console.log(simpleNumbers(firstNum))
+
+for (let i = firstNum; i <= lastNum; i++) {
+  let flag = false
+  colorPrint(i)
+  flag = true
 }
 
-
-function simpleNumbers(start, end) {
-  let res = []
-
-  //промежуток от start до end включительно
-  for (let i = start, flag = false; i <= end; i++, flag = 0) {
-    if (i < 2) {
-      return console.log('простых чисел в диапазоне нет')
-    }
-
-    for (let j = 2; j * j <= i; j++) {
-      if (i % j == 0) {
-        flag = true
-        break
-      }
-    }
-    if (!flag) res[res.length] = i
-  }
-  return res
+if (!flag) {
+  console.log('простых чисел в диапазоне нет')
 }
-console.log(`this is simple number ${simpleNumbers(30, 60).join(', ')}`)
-*/
