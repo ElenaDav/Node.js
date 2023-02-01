@@ -1,10 +1,11 @@
-// НЕ МОГУ ПОДКЛЮЧИТЬ ИМПОРТ - SyntaxError: Cannot use import statement outside a module
 import colors from 'colors'
 
 const [firstNum, lastNum] = process.argv.slice(2).map((item) => parseInt(item))
 
 if (isNaN(firstNum) || isNaN(lastNum)) {
-  console.error('аргумент, переданный при запуске, не считается числом')
+  console.error(
+    colors.bgRed('аргумент, переданный при запуске, не считается числом')
+  )
   process.exit(0)
 }
 
@@ -32,12 +33,15 @@ const simpleNumbers = (num) => {
 }
 // console.log(simpleNumbers(firstNum))
 
-for (let i = firstNum; i <= lastNum; i++) {
-  let flag = false
-  colorPrint(i)
-  flag = true
-}
+// let flag = false
+// let i = lastNum
+// while (i <= firstNum) {
+//   if (simpleNumbers) {
+//     colorPrint(i)
+//     flag = true
+//   }
+// }
 
-if (!flag) {
-  console.log('простых чисел в диапазоне нет')
-}
+// if (!flag) {
+//   console.log('простых чисел в диапазоне нет')
+// }
