@@ -1,0 +1,28 @@
+{
+  "name": "my_project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "hw01.js",
+  "scripts": {
+    "dev": "node hw01.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ElenaDav/Node.js.git"
+  },
+  "author": "ElenaD",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/ElenaDav/Node.js/issues"
+  },
+  "homepage": "https://github.com/ElenaDav/Node.js#readme",
+  "dependencies": {
+    "colors": "^1.4.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.33.0"
+  },
+  "keywords": []
+}
